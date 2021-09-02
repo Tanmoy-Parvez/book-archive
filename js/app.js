@@ -3,19 +3,26 @@ const searchField = document.getElementById('input-field');
 const results = document.getElementById('results');
 const errorMsg = document.getElementById('error');
 
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
 
 // load books data
 const loadBooks = () => {
     const searchText = searchField.value;
+    error.innerHTML = '';
+    booksContainer.innerHTML = '';
+    results.innerText = '';
+    toggleSpinner('block');
+
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     // error handling
     if (searchField.value === '') {
+        toggleSpinner('none');
         errorMsg.innerHTML = `
             <h5 class="text-center w-25 mx-auto p-3 bg-danger text-white">
                 Please enter a book name!
             </h5>`;
-        booksContainer.innerHTML = '';
-        results.innerText = '';
         return;
     }
     fetch(url)
@@ -27,15 +34,17 @@ const loadBooks = () => {
 
 // displaying search results/books.
 const displayBooks = (books) => {
+    toggleSpinner('none');
     // number of total search results.
     results.innerText = `Total search results: ${books.length}`;
     errorMsg.innerHTML = '';
     booksContainer.innerHTML = '';
     // error handling
     if (books.length === 0) {
+        toggleSpinner('none');
         errorMsg.innerHTML = `
-            <h5 class="text-center w-25 mx-auto p-3 bg-danger text-white">
-                No Results Found!
+            <h5 class="text-center  w-25 mx-auto p-3 bg-danger text-white">
+                NO RESULTS FOUND!
             </h5>`;
         results.innerText = '';
     }
@@ -51,7 +60,7 @@ const displayBooks = (books) => {
             <div class="card-body">
                 <h4 class="card-title">${title}</h4>
                 <h6 class="card-text">By: ${author_name}</h6>
-                <p class="card-text">Publisher: ${publisher}</p>
+                <p class="card-text">Publisher: ${publisher[0]}</p>
                 <p class="card-text">First published in ${first_publish_year}</p>
             </div>
         </div>
