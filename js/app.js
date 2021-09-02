@@ -4,6 +4,7 @@ const searchField = document.getElementById('input-field');
 const results = document.getElementById('results');
 const errorMsg = document.getElementById('error');
 
+
 // spinner
 const toggleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
@@ -52,19 +53,23 @@ const displayBooks = (books) => {
     }
     // single book
     books.forEach(book => {
-        console.log(book);
+        console.log(book.cover_i);
         const { title, publisher, author_name, first_publish_year, cover_i } = book; //destructuring
         const imgUrl = `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`;
+        const defaultImg = 'image/download.png';
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="col h-75">
             <div class="card h-100">
-                <img src="${imgUrl}" class="card-img-top h-50 p-1" alt="book image">
-                <div class="card-body overflow-auto">
+                <img src="${cover_i ? imgUrl : defaultImg}" class="card-img-top h-50 p-1" alt="book image">
+                <div class="card-body overflow-auto pt-2">
                     <h4 class="card-title">${title.slice(0, 30)}</h4>
                     <h6 class="card-text"><strong>By:</strong> ${author_name ? author_name : 'no name found'}</h6>
                     <h6 class="card-text"><strong>Publisher:</strong> ${publisher ? publisher[0] : 'no name found'}</h6>
                     <h6 class="card-text">First published in <strong>${first_publish_year ? first_publish_year : '...'}</strong></h6>
+                </div>
+                <div class="card-footer bg-dark py-2 text-center pt-1">
+                    <small class="text-white">Read Now</small>
                 </div>
             </div>
         </div>
