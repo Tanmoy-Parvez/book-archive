@@ -11,21 +11,22 @@
     <title>Book Archive</title>
 </head>
 
-<body>
+<body class="bg-dark">
     <header>
-        <h1 class="text-center text-primary my-3">Welcome to Book Archive</h1>
+        <h1 class="text-center text-white my-3">Welcome to Book Archive</h1>
         <!-- search field starts -->
         <div class="input-group mb-3 mx-auto w-50">
             <input id="input-field" type="text" class="form-control" placeholder="Search for books...">
-            <button onclick="loadBooks()" class="btn btn-outline-secondary">Search</button>
+            <button onclick="loadBooks()" class="btn btn-outline-light ms-1">Search</button>
         </div>
     </header>
     <!-- main section starts -->
     <main class="container-fluid">
-        <p id='error' class='text-center text-danger'></p>
-        <p id='results' class=''></p>
+        <div id='error'></div>
+        <p id='results' class='text-light'></p>
+        <!-- books section -->
         <section class="mt-5">
-            <div id="books-container" class="row row-cols-md-4 g-4 h-50">
+            <div id="books-container" class="row row-cols-md-4 g-4">
             </div>
         </section>
     </main>
