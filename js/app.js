@@ -4,19 +4,16 @@ const searchField = document.getElementById('input-field');
 const results = document.getElementById('results');
 const errorMsg = document.getElementById('error');
 
-
 // spinner
 const toggleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
-}
-
+};
 // clear previous elements
 const removeElements = () => {
     error.innerHTML = '';
     booksContainer.innerHTML = '';
     results.innerText = '';
-}
-
+};
 // load books data
 const loadBooks = () => {
     removeElements(); //clear elements
@@ -30,13 +27,13 @@ const loadBooks = () => {
             Please enter a book name!
         </h5>`;
         return;
-    }
+    };
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayBooks(data.docs))
         .finally(() => searchField.value = '') //clear input field
-}
+};
 
 // displaying searched books.
 const displayBooks = (books) => {
@@ -50,7 +47,7 @@ const displayBooks = (books) => {
                 NO RESULTS FOUND!
             </h5>`;
         results.innerText = ''; //clear previous result
-    }
+    };
     // single book
     books.forEach(book => {
         console.log(book.cover_i);
@@ -75,5 +72,5 @@ const displayBooks = (books) => {
         </div>
         `;
         booksContainer.appendChild(div);
-    })
-}
+    });
+};
