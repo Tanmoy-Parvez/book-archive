@@ -50,7 +50,6 @@ const displayBooks = (books) => {
     };
     // single book
     books.forEach(book => {
-        console.log(book.cover_i);
         const { title, publisher, author_name, first_publish_year, cover_i } = book; //destructuring
         const imgUrl = `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`;
         const defaultImg = 'image/download.png';
