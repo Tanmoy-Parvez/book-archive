@@ -63,10 +63,10 @@ const displayBooks = (books) => {
             <div class="card h-100">
                 <img src="${cover_i ? imgUrl : defaultImg}" class="card-img-top h-50 p-1" alt="book image">
                 <div class="card-body overflow-auto pt-2">
-                    <h4 class="card-title">${title.slice(0, 30)}</h4>
-                    <h6 class="card-text"><strong>By:</strong> ${author_name ? author_name : 'no name found'}</h6>
-                    <h6 class="card-text"><strong>Publisher:</strong> ${publisher ? publisher[0] : 'no name found'}</h6>
-                    <h6 class="card-text">First published in <strong>${first_publish_year ? first_publish_year : '...'}</strong></h6>
+                    <h4 class="card-title">${title}</h4>
+                    <p class="card-text"><strong>By:</strong> ${author_name ? author_name : 'no name found'}</p>
+                    <p class="card-text"><strong>Publisher:</strong> ${publisher ? publisher[0] : 'no name found'}</p>
+                    <p class="card-text">First published in <strong>${first_publish_year ? first_publish_year : '...'}</strong></p>
                 </div>
                 <div class="card-footer bg-dark py-2 text-center pt-1">
                     <small class="text-white">Read Now</small>
